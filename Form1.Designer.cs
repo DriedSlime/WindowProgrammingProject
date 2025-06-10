@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
@@ -39,7 +40,6 @@
             label5 = new Label();
             label4 = new Label();
             dataGridView1 = new DataGridView();
-            dateTimePicker1 = new DateTimePicker();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -60,6 +60,13 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "사용자 입력";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(107, 140);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(234, 31);
+            dateTimePicker1.TabIndex = 7;
             // 
             // button1
             // 
@@ -148,13 +155,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(904, 252);
             dataGridView1.TabIndex = 2;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(107, 140);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(234, 31);
-            dateTimePicker1.TabIndex = 7;
             // 
             // Form1
             // 

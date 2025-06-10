@@ -8,19 +8,23 @@ namespace WindowProgrammingProject
         {
             InitializeComponent();
 
-            // 총액 계산
-            label4.Text = "총 지불할 금액: " + BillManager.Total;
-
             // 데이터 그리드 설정
             dataGridView1.ReadOnly = true;
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.DataSource = BillManager.Bills;
             dataGridView1.CurrentCellChanged += DataGridView1_CurrentCellChanged;
+            dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
 
             // 버튼 이벤트 연결
             button1.Click += button1_Click; // 추가
-            button2.Click += button2_Click; // 삭제
-            button3.Click += button3_Click; // 수정
+        }
+
+        // 추가,변경, 삭제시 데이터그리드를 새로고침할 함수 
+        private void RefreshGrid()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = BillManager.Bills;
+            label4.Text = "총 지불할 금액: " + BillManager.Total;
         }
 
         // 셀 선택 시 텍스트박스에 값 표시
@@ -33,12 +37,31 @@ namespace WindowProgrammingProject
                 Bill bill = dataGridView1.CurrentRow.DataBoundItem as Bill;
                 if (bill != null)
                 {
-                    textBox4.Text = bill.Name;
-                    textBox5.Text = bill.Cost.ToString();
+                    textBox1.Text = bill.Name;
+                    textBox2.Text = bill.Cost.ToString();
                 }
             }
             catch (Exception) { }
         }
+
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; // 헤더 클릭 방지
+
+            var selectedBill = dataGridView1.Rows[e.RowIndex].DataBoundItem as Bill;
+            if (selectedBill == null) return;
+
+            // Form3을 열고, 선택된 Bill 전달
+            Form3 editForm = new Form3(selectedBill);
+            var result = editForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                BillManager.Save();
+                RefreshGrid(); // 수정 또는 삭제된 경우 갱신
+            }
+        }
+
 
         // 추가 버튼 클릭
         private void button1_Click(object sender, EventArgs e)
@@ -61,14 +84,12 @@ namespace WindowProgrammingProject
                 {
                     Name = textBox1.Text,
                     Cost = cost,
-                    DeadLine = dateTimePicker1.Value.Date // 시간 제외
+                    DeadLine = dateTimePicker1.Value.Date // 년, 월, 요일만 표시
                 };
                 BillManager.Bills.Add(bill);
                 BillManager.Save();
 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = BillManager.Bills;
-                label4.Text = "총 지불할 금액: " + BillManager.Total;
+                RefreshGrid();
             }
             catch (Exception ex)
             {
@@ -98,9 +119,7 @@ namespace WindowProgrammingProject
                 BillManager.Bills.Remove(selectedBill);
                 BillManager.Save();
 
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = BillManager.Bills;
-                label4.Text = "총 지불할 금액: " + BillManager.Total;
+                RefreshGrid();
                 MessageBox.Show("삭제되었습니다.");
             }
         }
@@ -135,11 +154,10 @@ namespace WindowProgrammingProject
 
             BillManager.Save();
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = BillManager.Bills;
-            label4.Text = "총 지불할 금액: " + BillManager.Total;
+            RefreshGrid();
 
             MessageBox.Show("수정되었습니다.");
         }
+
     }
 }

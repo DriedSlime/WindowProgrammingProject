@@ -2,7 +2,7 @@
 
 namespace WindowProgrammingProject
 {
-    internal class Bill
+    public class Bill
     {
         public string Name { get; set; }
         public int Cost { get; set; }
