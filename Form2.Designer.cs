@@ -40,7 +40,7 @@
             // 
             textBox1.CausesValidation = false;
             textBox1.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            textBox1.Location = new Point(250, 175);
+            textBox1.Location = new Point(157, 175);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(250, 39);
             textBox1.TabIndex = 0;
@@ -48,14 +48,14 @@
             // textBox2
             // 
             textBox2.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            textBox2.Location = new Point(250, 240);
+            textBox2.Location = new Point(157, 240);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(250, 39);
             textBox2.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(420, 290);
+            button1.Location = new Point(327, 290);
             button1.Name = "button1";
             button1.Size = new Size(80, 40);
             button1.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label1.Location = new Point(320, 95);
+            label1.Location = new Point(227, 95);
             label1.Name = "label1";
             label1.Size = new Size(101, 38);
             label1.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("맑은 고딕", 8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label2.Location = new Point(250, 152);
+            label2.Location = new Point(157, 152);
             label2.Name = "label2";
             label2.Size = new Size(25, 21);
             label2.TabIndex = 4;
@@ -87,7 +87,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("맑은 고딕", 8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label3.Location = new Point(250, 216);
+            label3.Location = new Point(157, 216);
             label3.Name = "label3";
             label3.Size = new Size(79, 21);
             label3.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(778, 444);
+            ClientSize = new Size(564, 455);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);

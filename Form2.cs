@@ -8,6 +8,8 @@ namespace WindowProgrammingProject
         public Form2()
         {
             InitializeComponent();
+
+            textBox2.PasswordChar = '*';    // 비밀번호는 숨김 처리
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -19,7 +21,7 @@ namespace WindowProgrammingProject
             {
                 this.Hide(); // 현재 로그인 폼 숨기기
                 Form1 mainForm = new Form1();
-                mainForm.FormClosed += (s, args) => this.Close(); // 메인폼이 닫히면 전체 앱 종료
+                mainForm.FormClosed += (s, args) => this.Close();   // 메인폼이 닫히면 전체 앱 종료
                 mainForm.Show();
             }
             else

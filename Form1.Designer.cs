@@ -40,6 +40,10 @@
             label5 = new Label();
             label4 = new Label();
             dataGridView1 = new DataGridView();
+            button2 = new Button();
+            button3 = new Button();
+            label6 = new Label();
+            label7 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -70,9 +74,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(347, 140);
+            button1.Location = new Point(347, 135);
             button1.Name = "button1";
-            button1.Size = new Size(112, 34);
+            button1.Size = new Size(60, 45);
             button1.TabIndex = 6;
             button1.Text = "추가";
             button1.UseVisualStyleBackColor = true;
@@ -81,14 +85,14 @@
             // 
             textBox2.Location = new Point(107, 90);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 31);
+            textBox2.Size = new Size(234, 31);
             textBox2.TabIndex = 4;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(107, 40);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
+            textBox1.Size = new Size(234, 31);
             textBox1.TabIndex = 3;
             // 
             // label3
@@ -120,6 +124,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label4);
             groupBox2.Location = new Point(67, 50);
@@ -132,16 +138,16 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(37, 90);
+            label5.Location = new Point(32, 90);
             label5.Name = "label5";
-            label5.Size = new Size(124, 25);
+            label5.Size = new Size(130, 25);
             label5.TabIndex = 1;
-            label5.Text = "월 지출액    : ";
+            label5.Text = "총 지출 합계 : ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(37, 46);
+            label4.Location = new Point(38, 46);
             label4.Name = "label4";
             label4.Size = new Size(124, 25);
             label4.TabIndex = 0;
@@ -153,14 +159,53 @@
             dataGridView1.Location = new Point(67, 259);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(904, 252);
+            dataGridView1.Size = new Size(832, 252);
             dataGridView1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(905, 328);
+            button2.Name = "button2";
+            button2.Size = new Size(60, 45);
+            button2.TabIndex = 8;
+            button2.Text = "지불";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(905, 391);
+            button3.Name = "button3";
+            button3.Size = new Size(60, 45);
+            button3.TabIndex = 9;
+            button3.Text = "삭제";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(168, 46);
+            label6.Name = "label6";
+            label6.Size = new Size(60, 25);
+            label6.TabIndex = 2;
+            label6.Text = "label6";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(168, 90);
+            label7.Name = "label7";
+            label7.Size = new Size(60, 25);
+            label7.TabIndex = 3;
+            label7.Text = "label7";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1042, 532);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(groupBox2);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
@@ -188,5 +233,9 @@
         private Label label5;
         private Label label4;
         private DateTimePicker dateTimePicker1;
+        private Button button2;
+        private Button button3;
+        private Label label7;
+        private Label label6;
     }
 }

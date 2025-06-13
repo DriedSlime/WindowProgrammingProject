@@ -2,28 +2,34 @@
 
 namespace WindowProgrammingProject
 {
-    internal class BillManager
+    public class BillManager
     {
         public static List<Bill> Bills = new List<Bill>();
-
-        public static int Total = Bills.Sum(x => x.Cost);
+        
         static BillManager()
         {
-            Load();
+            try
+            {
+                Load();
+            }
+            catch (Exception ex)
+            {
+                Bills = new List<Bill>(); // 예외 발생 시 빈 리스트로 대체
+            }
         }
 
         public static void Load()
         {
             try
             {
-                string booksOutput = File.ReadAllText(@"./Bills.xml");
-                XElement billsXElement = XElement.Parse(booksOutput);
+                string billsOutput = File.ReadAllText(@"./Bills.xml");
+                XElement billsXElement = XElement.Parse(billsOutput);
                 Bills = (from item in billsXElement.Descendants("bill")
                          select new Bill()
                          {
                              Name = item.Element("name").Value,
                              Cost = int.Parse(item.Element("cost").Value),
-                             IsPaid = item.Element("isPayed").Value == "0" ? false : true,
+                             IsPaid = item.Element("isPaid").Value,
                              DeadLine = DateTime.Parse(item.Element("DeadLine").Value),
                          }).ToList<Bill>();
 
@@ -42,9 +48,8 @@ namespace WindowProgrammingProject
                 billsOutput += "<bill>\n";
                 billsOutput += "  <name>" + item.Name + "</name>\n";
                 billsOutput += "  <cost>" + item.Cost + "</cost>\n";
-                billsOutput += "  <isPayed>" + (item.IsPaid ? 1 : 0) + "</isPayed>\n";
+                billsOutput += "  <isPaid>" + item.IsPaid + "</isPaid>\n";
                 billsOutput += "  <DeadLine>" + item.DeadLine.ToLongDateString() + "</DeadLine>\n";
-                billsOutput += "  <total>" + item.Total + "</total>\n";
                 billsOutput += "</bill>\n";
             }
             billsOutput += "</bills>";
