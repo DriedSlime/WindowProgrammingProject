@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            textBox3 = new TextBox();
+            comboBox1 = new ComboBox();
+            label8 = new Label();
             dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
             textBox2 = new TextBox();
@@ -37,13 +40,13 @@
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
+            label7 = new Label();
+            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             dataGridView1 = new DataGridView();
             button2 = new Button();
             button3 = new Button();
-            label6 = new Label();
-            label7 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -51,6 +54,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(textBox2);
@@ -58,25 +64,51 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(492, 50);
+            groupBox1.Location = new Point(492, 20);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(479, 186);
+            groupBox1.Size = new Size(479, 216);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "사용자 입력";
             // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(186, 136);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(195, 31);
+            textBox3.TabIndex = 10;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "국민", "신한", "우리", "하나", "농협", "기업", "카카오", "토스", "시티", "" });
+            comboBox1.Location = new Point(107, 134);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(73, 33);
+            comboBox1.TabIndex = 9;
+            comboBox1.Text = "은행";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(2, 134);
+            label8.Name = "label8";
+            label8.Size = new Size(84, 25);
+            label8.TabIndex = 8;
+            label8.Text = "보낼계좌";
+            // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(107, 140);
+            dateTimePicker1.Location = new Point(107, 179);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(234, 31);
+            dateTimePicker1.Size = new Size(274, 31);
             dateTimePicker1.TabIndex = 7;
             // 
             // button1
             // 
-            button1.Location = new Point(347, 135);
+            button1.Location = new Point(387, 169);
             button1.Name = "button1";
-            button1.Size = new Size(60, 45);
+            button1.Size = new Size(86, 45);
             button1.TabIndex = 6;
             button1.Text = "추가";
             button1.UseVisualStyleBackColor = true;
@@ -85,20 +117,20 @@
             // 
             textBox2.Location = new Point(107, 90);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(234, 31);
+            textBox2.Size = new Size(274, 31);
             textBox2.TabIndex = 4;
             // 
             // textBox1
             // 
             textBox1.Location = new Point(107, 40);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(234, 31);
+            textBox1.Size = new Size(274, 31);
             textBox1.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(20, 140);
+            label3.Location = new Point(38, 179);
             label3.Name = "label3";
             label3.Size = new Size(48, 25);
             label3.TabIndex = 2;
@@ -107,7 +139,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(20, 90);
+            label2.Location = new Point(38, 90);
             label2.Name = "label2";
             label2.Size = new Size(48, 25);
             label2.TabIndex = 1;
@@ -134,6 +166,24 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(168, 90);
+            label7.Name = "label7";
+            label7.Size = new Size(60, 25);
+            label7.TabIndex = 3;
+            label7.Text = "label7";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(168, 46);
+            label6.Name = "label6";
+            label6.Size = new Size(60, 25);
+            label6.TabIndex = 2;
+            label6.Text = "label6";
             // 
             // label5
             // 
@@ -180,24 +230,6 @@
             button3.Text = "삭제";
             button3.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(168, 46);
-            label6.Name = "label6";
-            label6.Size = new Size(60, 25);
-            label6.TabIndex = 2;
-            label6.Text = "label6";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(168, 90);
-            label7.Name = "label7";
-            label7.Size = new Size(60, 25);
-            label7.TabIndex = 3;
-            label7.Text = "label7";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -237,5 +269,8 @@
         private Button button3;
         private Label label7;
         private Label label6;
+        private TextBox textBox3;
+        private ComboBox comboBox1;
+        private Label label8;
     }
 }

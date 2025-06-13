@@ -31,8 +31,10 @@ namespace WindowProgrammingProject
                              Cost = int.Parse(item.Element("cost").Value),
                              IsPaid = item.Element("isPaid").Value,
                              DeadLine = DateTime.Parse(item.Element("DeadLine").Value),
+                             BankName = item.Element("bankName").Value,
+                             AccountNumber = item.Element("accountNumber").Value
                          }).ToList<Bill>();
-
+                
             }
             catch (FileNotFoundException exception)
             {
@@ -50,6 +52,7 @@ namespace WindowProgrammingProject
                 billsOutput += "  <cost>" + item.Cost + "</cost>\n";
                 billsOutput += "  <isPaid>" + item.IsPaid + "</isPaid>\n";
                 billsOutput += "  <DeadLine>" + item.DeadLine.ToLongDateString() + "</DeadLine>\n";
+                billsOutput += "  <Bank>" + item.BankName + ":" + item.AccountNumber + "</Bank>\n";
                 billsOutput += "</bill>\n";
             }
             billsOutput += "</bills>";

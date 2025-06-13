@@ -19,6 +19,8 @@ namespace WindowProgrammingProject
             textBox1.Text = bill.Name;
             textBox2.Text = bill.Cost.ToString();
             dateTimePicker1.Value = bill.DeadLine;
+            comboBox1.Text = bill.BankName;
+            textBox3.Text = bill.AccountNumber.ToString();
         }
 
         // 확인 버튼
@@ -33,27 +35,14 @@ namespace WindowProgrammingProject
             bill.Name = textBox1.Text.Trim();
             bill.Cost = cost;
             bill.DeadLine = dateTimePicker1.Value.Date;
+            bill.BankName = comboBox1.Text;
+            bill.AccountNumber = textBox3.Text;
 
             this.DialogResult = DialogResult.OK;
             BillManager.Save();
 
             mainForm.RefreshGrid();
             this.Close();
-        }
-
-        // 삭제 버튼
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var confirm = MessageBox.Show($"정말 '{bill.Name}'을 삭제하시겠습니까?", "확인", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
-            {
-                BillManager.Bills.Remove(this.bill);
-                BillManager.Save();
-
-                mainForm.RefreshGrid();
-                MessageBox.Show("삭제되었습니다.");
-                this.Close();
-            }
         }
     }
 }

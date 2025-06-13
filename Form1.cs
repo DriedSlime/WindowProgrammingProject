@@ -1,9 +1,11 @@
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowProgrammingProject
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -13,12 +15,16 @@ namespace WindowProgrammingProject
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.DataSource = BillManager.Bills;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick; // 데이터그리드 셀 더블클릭
+            dataGridView1.Columns["BankName"].Visible = false;
+            dataGridView1.Columns["AccountNumber"].Visible = false;
 
             // 버튼 이벤트 연결
             button1.Click += Button1_Click; // 추가
             button2.Click += Button2_Click; // 지불
             button3.Click += Button3_Click; // 삭제
 
+            label6.Text = BillManager.Bills.Count.ToString() + " 개";
+            label7.Text = Total().ToString();
         }
 
         // 추가,변경, 삭제시 데이터그리드를 새로고침할 함수 
@@ -26,7 +32,11 @@ namespace WindowProgrammingProject
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = BillManager.Bills;
-            
+            // 은행명과 계좌번호는 숨기기
+            dataGridView1.Columns["BankName"].Visible = false;
+            dataGridView1.Columns["AccountNumber"].Visible = false;
+            label6.Text = BillManager.Bills.Count.ToString() + " 개";
+            label7.Text = Total().ToString();
         }
 
         // 데이터그리드 셀 더블클릭 시 수정 폼 띄우기
@@ -47,7 +57,6 @@ namespace WindowProgrammingProject
                 RefreshGrid(); // 수정 또는 삭제된 경우 갱신
             }
         }
-
 
         // 추가 버튼 클릭
         private void Button1_Click(object sender, EventArgs e)
@@ -71,7 +80,9 @@ namespace WindowProgrammingProject
                     Name = textBox1.Text,
                     Cost = cost,
                     IsPaid = "미지불",
-                    DeadLine = dateTimePicker1.Value.Date // 년, 월, 요일만 표시
+                    DeadLine = dateTimePicker1.Value.Date,// 년, 월, 요일만 표시   
+                    BankName = comboBox1.Text,
+                    AccountNumber = textBox3.Text
                 };
                 BillManager.Bills.Add(bill);
                 BillManager.Save();
@@ -90,16 +101,8 @@ namespace WindowProgrammingProject
         // 지불 완료 버튼
         private void Button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null) return;
-
-            Bill selectedBill = new Bill();
-            if (selectedBill != null) {
-                selectedBill = dataGridView1.CurrentRow.DataBoundItem as Bill;
-            }
-            else
-            {
-                return;
-            }
+            var selectedBill = dataGridView1.CurrentRow.DataBoundItem as Bill;
+            if (selectedBill == null) return;
 
             selectedBill.IsPaid = "지불됨";
             BillManager.Save();
@@ -124,6 +127,14 @@ namespace WindowProgrammingProject
                 RefreshGrid();
                 MessageBox.Show("삭제되었습니다.");
             }
+        }
+
+        // 지불한 요소들의 합계 반환
+        private int Total()
+        {
+            return BillManager.Bills
+                .Where(b => b.IsPaid == "지불됨")
+                .Sum(b => b.Cost);
         }
     }
 }
