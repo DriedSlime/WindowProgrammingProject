@@ -40,24 +40,27 @@
             // 
             textBox1.CausesValidation = false;
             textBox1.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            textBox1.Location = new Point(157, 175);
+            textBox1.Location = new Point(188, 210);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(250, 39);
+            textBox1.Size = new Size(299, 45);
             textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
             textBox2.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            textBox2.Location = new Point(157, 240);
+            textBox2.Location = new Point(188, 288);
+            textBox2.Margin = new Padding(4, 4, 4, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(250, 39);
+            textBox2.Size = new Size(299, 45);
             textBox2.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(327, 290);
+            button1.Location = new Point(392, 348);
+            button1.Margin = new Padding(4, 4, 4, 4);
             button1.Name = "button1";
-            button1.Size = new Size(80, 40);
+            button1.Size = new Size(96, 48);
             button1.TabIndex = 2;
             button1.Text = "확인";
             button1.UseVisualStyleBackColor = true;
@@ -67,9 +70,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("맑은 고딕", 14F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label1.Location = new Point(227, 95);
+            label1.Location = new Point(272, 114);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(101, 38);
+            label1.Size = new Size(119, 45);
             label1.TabIndex = 3;
             label1.Text = "로그인";
             // 
@@ -77,9 +81,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("맑은 고딕", 8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label2.Location = new Point(157, 152);
+            label2.Location = new Point(188, 182);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(25, 21);
+            label2.Size = new Size(31, 25);
             label2.TabIndex = 4;
             label2.Text = "ID";
             // 
@@ -87,24 +92,27 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("맑은 고딕", 8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            label3.Location = new Point(157, 216);
+            label3.Location = new Point(188, 259);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(79, 21);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 5;
             label3.Text = "Password";
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(564, 455);
+            ClientSize = new Size(677, 546);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             ResumeLayout(false);
             PerformLayout();

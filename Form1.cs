@@ -15,8 +15,10 @@ namespace WindowProgrammingProject
             dataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridView1.DataSource = BillManager.Bills;
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick; // 데이터그리드 셀 더블클릭
-            dataGridView1.Columns["BankName"].Visible = false;
-            dataGridView1.Columns["AccountNumber"].Visible = false;
+            dataGridView1.Columns["BankName"].Visible = false;              // BankName 표시 비활성화
+            dataGridView1.Columns["AccountNumber"].Visible = false;         // AccountNumber 표시 비활성화
+            dataGridView1.Columns["Bank"].Width = 236;                      // Bank열은 조금더 길게 조정
+
 
             // 버튼 이벤트 연결
             button1.Click += Button1_Click; // 추가
@@ -25,6 +27,8 @@ namespace WindowProgrammingProject
 
             label6.Text = BillManager.Bills.Count.ToString() + " 개";
             label7.Text = Total().ToString();
+
+            comboBox1.SelectedIndex = 0;
         }
 
         // 추가,변경, 삭제시 데이터그리드를 새로고침할 함수 
@@ -32,9 +36,16 @@ namespace WindowProgrammingProject
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = BillManager.Bills;
+
             // 은행명과 계좌번호는 숨기기
-            dataGridView1.Columns["BankName"].Visible = false;
-            dataGridView1.Columns["AccountNumber"].Visible = false;
+            if (dataGridView1.Columns.Contains("BankName"))
+                dataGridView1.Columns["BankName"].Visible = false;
+            if (dataGridView1.Columns.Contains("AccountNumber"))
+                dataGridView1.Columns["AccountNumber"].Visible = false;
+
+            if (dataGridView1.Columns.Contains("Bank"))
+                dataGridView1.Columns["Bank"].Width = 236;
+
             label6.Text = BillManager.Bills.Count.ToString() + " 개";
             label7.Text = Total().ToString();
         }
@@ -44,17 +55,19 @@ namespace WindowProgrammingProject
         {
             if (e.RowIndex < 0) return; // 헤더 클릭 무효
 
-            var selectedBill = dataGridView1.Rows[e.RowIndex].DataBoundItem as Bill;
+            Bill selectedBill = dataGridView1.Rows[e.RowIndex].DataBoundItem as Bill;
             if (selectedBill == null) return;
 
             // Form3을 열고, 선택된 Bill 전달
             Form3 editForm = new Form3(selectedBill);
+
             var result = editForm.ShowDialog();
 
+            // 확인 신호를 받으면 데이터 갱신
             if (result == DialogResult.OK)
             {
                 BillManager.Save();
-                RefreshGrid(); // 수정 또는 삭제된 경우 갱신
+                RefreshGrid();
             }
         }
 
@@ -63,18 +76,25 @@ namespace WindowProgrammingProject
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(textBox1.Text) || !int.TryParse(textBox2.Text, out int cost))
+                // 데이터 유효성 검사
+                if (textBox1.Text.Trim() == "" || !int.TryParse(textBox2.Text, out int cost))
                 {
                     MessageBox.Show("이름을 입력하고, 금액은 숫자로 입력하세요.");
                     return;
                 }
-
+                // 이름은 중복되지 않게 제한
                 if (BillManager.Bills.Exists(x => x.Name == textBox1.Text))
                 {
                     MessageBox.Show("중복되는 명세서입니다.");
                     return;
                 }
+                if (comboBox1.SelectedIndex == -1 || textBox3.Text.Trim() == "")
+                {
+                    MessageBox.Show("은행 또는 계좌번호를 입력해주세요");
+                    return;
+                }
 
+                // 새로운 명세서 생성
                 Bill bill = new Bill()
                 {
                     Name = textBox1.Text,
@@ -87,9 +107,13 @@ namespace WindowProgrammingProject
                 BillManager.Bills.Add(bill);
                 BillManager.Save();
 
+                // UI에 입력한 데이터들을 모두 초기화
                 textBox1.Text = "";
                 textBox2.Text = "";
                 dateTimePicker1.Value = DateTime.Now;
+                comboBox1.SelectedIndex = 0;
+                textBox3.Text = "";
+
                 RefreshGrid();
             }
             catch (Exception ex)
@@ -101,7 +125,7 @@ namespace WindowProgrammingProject
         // 지불 완료 버튼
         private void Button2_Click(object sender, EventArgs e)
         {
-            var selectedBill = dataGridView1.CurrentRow.DataBoundItem as Bill;
+            Bill selectedBill = dataGridView1.CurrentRow.DataBoundItem as Bill;
             if (selectedBill == null) return;
 
             selectedBill.IsPaid = "지불됨";
