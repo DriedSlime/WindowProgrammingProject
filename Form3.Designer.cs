@@ -1,4 +1,4 @@
-﻿namespace WindowProgrammingProject
+﻿namespace PublicBillManager
 {
     partial class Form3
     {

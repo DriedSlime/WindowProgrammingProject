@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace WindowProgrammingProject
+namespace PublicBillManager
 {
     public partial class Form2 : Form
     {
