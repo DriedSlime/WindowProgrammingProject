@@ -1,7 +1,7 @@
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace WindowProgrammingProject
+namespace PublicBillManager
 {
     public partial class Form1 : Form
     {
@@ -24,7 +24,7 @@ namespace WindowProgrammingProject
             button1.Click += Button1_Click; // 추가
             button2.Click += Button2_Click; // 지불
             button3.Click += Button3_Click; // 삭제
-
+            
             label6.Text = BillManager.Bills.Count.ToString() + " 개";
             label7.Text = Total().ToString();
 

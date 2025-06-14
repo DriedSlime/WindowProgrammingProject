@@ -1,4 +1,4 @@
-namespace WindowProgrammingProject
+namespace PublicBillManager
 {
     internal static class Program
     {

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace WindowProgrammingProject
+namespace PublicBillManager
 {
     public partial class Form3 : Form
     {

@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace WindowProgrammingProject
+namespace PublicBillManager
 {
     public class BillManager
     {
